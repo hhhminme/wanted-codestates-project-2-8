@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import styled from "styled-components";
 import Home from "./pages/Home";
+import Landing from "./pages/Landing";
 import List from "./pages/List";
+import Start from "./pages/Start";
 
 const GlobalContainer = styled.div`
   position: relative;
@@ -23,6 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/list" element={<List />}></Route>
+          <Route path="/start" element={<Start />}></Route>
+          <Route path="/landing" element={<Landing />}></Route>
         </Routes>
       </Router>
     </GlobalContainer>
