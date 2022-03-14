@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export type RecreationForestResponse = {
+export type RecreationForestListResponse = {
   response: RecreationForest[];
 };
 
@@ -23,13 +23,13 @@ export type RecreationForest = {
   zip: string;
 };
 
-export const getRecreationForest = async (page: number) => {
+export const getRecreationForestList = async (page: number) => {
   try {
     const res = await axios.get<string>(
       `/openapi-json/pubdata/pubMapForest.do?numOfRows=10&pageNo=${page}`,
     );
 
-    const parsedData = JSON.parse(res.data) as RecreationForestResponse;
+    const parsedData = JSON.parse(res.data) as RecreationForestListResponse;
     return parsedData.response;
   } catch (err) {
     console.error(err);
