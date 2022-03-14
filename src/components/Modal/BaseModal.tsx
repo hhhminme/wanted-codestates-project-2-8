@@ -4,20 +4,20 @@ import { useClickAway } from "./ModalHooks/useClickAway";
 import * as S from "./style";
 import { Props } from ".";
 
-const BaseModal = ({ children, setIsModalOpen, ...props }: Props) => {
+const BaseModal = ({ children, setIsModalOpen, isAway, ...props }: Props) => {
   usePreventScroll();
 
   const handleCloseBtn = useCallback(() => {
     setIsModalOpen(false);
   }, []);
-  // const ref = useClickAway(handleCloseBtn);
+  const ref = isAway ? useClickAway(handleCloseBtn) : null;
 
   return (
     <S.Dim>
       <S.Wrapper
         tabIndex={0}
         className="modal"
-        // ref={ref as MutableRefObject<HTMLDivElement>}
+        ref={ref as MutableRefObject<HTMLDivElement>}
         {...props}
       >
         {children}
