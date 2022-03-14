@@ -4,14 +4,15 @@ import * as S from "./style";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
 import { GrRefresh } from "react-icons/gr";
-import { FilterMemo } from "../../pages/Home/Home";
 
-interface SearchProps {
-  filteredMemo: FilterMemo[];
-  setFilteredMemo: React.Dispatch<React.SetStateAction<FilterMemo[]>>;
+import { ClickedItem } from "../../pages/Home/Home";
+
+interface SearchedProps {
+  savedItem: ClickedItem[];
+  setFilteredItem: React.Dispatch<React.SetStateAction<ClickedItem[]>>;
 }
 
-function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
+function Search({ savedItem, setFilteredItem }: SearchedProps) {
   const [selected, setSelected] = useState("이름");
   const [isShowOptions, setIsShowOptions] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);

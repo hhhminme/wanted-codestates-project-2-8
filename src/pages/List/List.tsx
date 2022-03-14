@@ -7,8 +7,9 @@ import { RecreationForest, getRecreationForestList } from "../../api/getRecreati
 import { Link } from "react-router-dom";
 import FormModal from "src/components/FormModal";
 import { LOCAL_STORAGE_KEY } from "src/constants";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { MemoRequestMsg, MemoExistMsg } from "../../components/toast/Toast";
+
 interface ClickedItem {
   fcNo: number;
   fcNm: string;
