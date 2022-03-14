@@ -1,1 +1,1 @@
-# wanted-codestates-project-2-8
+# 2022 원티드 프리온보딩 프론트엔드 코스 기업과제 - 더블엔씨
