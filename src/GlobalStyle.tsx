@@ -6,13 +6,20 @@ const GlobalStyle = createGlobalStyle`
   *,:after, :before {box-sizing:border-box;flex-shrink:0;}
   :root {-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%;text-size-adjust:100%;cursor:default;line-height:1.5;overflow-wrap:break-word;-moz-tab-size:4;tab-size:4}
   html {font-size: 62.5%;}
-  html, body {width: 100%; height:100%; max-width:360px; margin: 0 auto; background-color: #F7F7FB; color: #5B5555}
+  html, body {width: 100%; height:100%; max-width:360px; margin: 0 auto; background-color: #F7F7FB; color: black}
   img, picture, video, canvas, svg {display: block;max-width:100%;}
   button {background:none;border:0;cursor:pointer;}
   a {text-decoration:none}
   table {border-collapse:collapse;border-spacing:0}
   * {
-    font-family: "Spoqa Han Sans Neo", "sans-serif";
+  font-family: "Helvetica", "Arial", sans-serif;
+  }
+
+  :root {
+    --color-green-dark : #019267;
+    --color-green : #00C897;
+    --color-yellow-dark : #FFD365;
+    --color-yellow : #FDFFA9;
   }
 `;
 
