@@ -22,8 +22,21 @@ function Search({ savedItem, setFilteredItem }: SearchedProps) {
   }, []);
 
   const handleSearchBar = (e: React.KeyboardEvent) => {
+    let result;
     if (e.key === "Enter") {
-      // console.log("enter!");
+      const keyword = inputRef.current && inputRef.current.value;
+      switch (selected) {
+        case "이름":
+          result = savedItem.filter((item) => item.fcNm.includes(keyword as string));
+          setFilteredItem(result);
+          break;
+        case "메모":
+          result = savedItem.filter((item) => item.memo.includes(keyword as string));
+          setFilteredItem(result);
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -34,6 +47,10 @@ function Search({ savedItem, setFilteredItem }: SearchedProps) {
   const handleOption = (option: string) => {
     setSelected(option);
     setIsShowOptions(false);
+  };
+
+  const handleRefresh = () => {
+    setFilteredItem(savedItem);
   };
 
   return (
@@ -51,7 +68,7 @@ function Search({ savedItem, setFilteredItem }: SearchedProps) {
           ))}
         </S.Options>
       )}
-      <S.Refresh>
+      <S.Refresh onClick={handleRefresh}>
         <GrRefresh />
       </S.Refresh>
       <S.Input
