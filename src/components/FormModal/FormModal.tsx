@@ -1,44 +1,46 @@
-import React, { Dispatch, MouseEvent, SetStateAction, useRef } from "react";
+import React, { Dispatch, SetStateAction, useRef } from "react";
 import Modal from "../Modal";
 import Input from "./Input";
 import * as S from "./style";
 
 interface Props {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  fcNo: number;
   name: string;
   address: string;
   tel: string;
   initialMemo?: string;
   isEdit?: boolean;
+  isAway?: boolean;
   handleRemoveBtn?: () => void;
-  handleSubmitBtn: (name: string, address: string, tel: string, memo: string) => void;
+  handleSubmitBtn: (fcNo: number, name: string, address: string, tel: string, memo: string) => void;
 }
 
 const FormModal = ({
   setIsModalOpen,
+  fcNo,
   name,
   address,
   tel,
   initialMemo = "",
   isEdit,
+  isAway,
   handleRemoveBtn,
   handleSubmitBtn,
 }: Props) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const onSubmitClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onSubmitClick = () => {
     const inputValue = inputRef.current?.value || "";
 
-    handleSubmitBtn(name, address, tel, inputValue);
-    setIsModalOpen(false);
+    handleSubmitBtn(fcNo, name, address, tel, inputValue);
   };
 
-  const onRemoveClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onRemoveClick = () => {
     handleRemoveBtn && handleRemoveBtn();
-    setIsModalOpen(false);
   };
   return (
-    <Modal setIsModalOpen={setIsModalOpen}>
+    <Modal setIsModalOpen={setIsModalOpen} isAway={isAway}>
       <S.ModalInner>
         <div>
           <S.Title>이름</S.Title>
