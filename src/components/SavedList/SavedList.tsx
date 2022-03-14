@@ -35,10 +35,20 @@ function SavedList({ filteredMemo }: Props) {
 
   return (
     <S.SavedListWrapper>
-      {filteredMemo.length > 0 &&
+      {filteredMemo.length > 0 ? (
         filteredMemo.map((memo: FilterMemo, index: number) => {
-          return <div key={index}>{memo.fcAddr}</div>;
-        })}
+          return (
+            <S.CardWrapper key={index}>
+              <S.Title>{memo.fcNm}</S.Title>
+              <S.Line>{memo.fcAddr}</S.Line>
+              <S.Line>{memo.ref1}</S.Line>
+              <S.Line>메모</S.Line>
+            </S.CardWrapper>
+          );
+        })
+      ) : (
+        <S.NoMemo>저장한 메모가 없습니다.</S.NoMemo>
+      )}
       <S.AddMemo
         onClick={() => {
           navigation("/list");
