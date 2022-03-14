@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import { GrRefresh } from "react-icons/gr";
 
 import * as S from "./style";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
-import { GrRefresh } from "react-icons/gr";
+
 import { FilterMemo } from "../../pages/Home/Home";
 
 interface SearchProps {
@@ -39,7 +40,7 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
     <S.Container>
       <S.Select onClick={handleSelect}>
         <div>{selected}</div>
-        {isShowOptions ? <BsChevronUp /> : <BsChevronDown />}
+        {isShowOptions ? <S.UpBtn /> : <S.DownBtn />}
       </S.Select>
       {isShowOptions && (
         <S.Options>
@@ -50,15 +51,17 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
           ))}
         </S.Options>
       )}
-      <S.Refresh>
-        <GrRefresh />
-      </S.Refresh>
-      <S.Input
-        type="search"
-        placeholder="검색어를 입력해주세요"
-        ref={inputRef}
-        onKeyUp={handleSearchBar}
-      />
+      <S.InputWrap>
+        <S.Input
+          type="search"
+          placeholder="검색어를 입력해주세요"
+          ref={inputRef}
+          onKeyUp={handleSearchBar}
+        />
+        <S.Refresh>
+          <GrRefresh />
+        </S.Refresh>
+      </S.InputWrap>
     </S.Container>
   );
 }
