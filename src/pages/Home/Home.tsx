@@ -28,12 +28,26 @@ export interface FilterMemo {
 interface realType {
   response: FilterMemo[];
 }
-interface Props {
-  filteredMemo: realType;
-}
 
 const Home = () => {
   const [filteredMemo, setFilteredMemo] = useState<FilterMemo[]>([]);
+
+  const getLocalStorage = (key: string, initialState: FilterMemo[]) => {
+    try {
+      const item = localStorage.getItem(key);
+      if (item) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const parseItem = JSON.parse(JSON.parse(item) as string);
+
+        setFilteredMemo(parseItem as FilterMemo[]);
+      } else {
+        console.log("꽝");
+      }
+    } catch (error) {
+      console.log(error);
+      return initialState;
+    }
+  };
 
   useEffect(() => {
     // 로컬 스토리지에서 데이터 가져오기
@@ -41,7 +55,7 @@ const Home = () => {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     setFilteredMemo(data.response as FilterMemo[]);
     console.log(filteredMemo);
-  }, [filteredMemo]);
+  }, []);
 
   return (
     <S.Container>
