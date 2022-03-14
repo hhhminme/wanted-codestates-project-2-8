@@ -14,7 +14,7 @@ const Modal = ({ children, setIsModalOpen, isAway, ...props }: Props) => {
   const el = useCreateElement("portal-modal");
 
   return ReactDOM.createPortal(
-    <BaseModal {...props} setIsModalOpen={setIsModalOpen}>
+    <BaseModal {...props} setIsModalOpen={setIsModalOpen} isAway={isAway}>
       {children}
     </BaseModal>,
     el,

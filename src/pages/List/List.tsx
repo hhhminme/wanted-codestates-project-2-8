@@ -5,11 +5,23 @@ import Item from "src/components/Item";
 import * as S from "./style";
 import { RecreationForest, getRecreationForestList } from "../../api/getRecreationForestList";
 import { Link } from "react-router-dom";
+import FormModal from "src/components/FormModal";
+import { LOCAL_STORAGE_KEY } from "src/constants";
+import { useLocalStorage } from "./useLocalStorage";
 
+interface ClickedItem {
+  fcNo: number;
+  fcNm: string;
+  fcAddr: string;
+  memo: string;
+  ref1: string;
+}
 const List = () => {
   const [dataList, setDataList] = useState<RecreationForest[] | []>([]);
   const [page, setPage] = useState(1);
-
+  const [clickedItem, setClickedItem] = useState<ClickedItem | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [savedItem, setSavedItem] = useLocalStorage<ClickedItem[] | []>(LOCAL_STORAGE_KEY, []);
   const targetRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -42,6 +54,32 @@ const List = () => {
     return () => observer && observer.disconnect();
   }, [targetRef.current]);
 
+  const handleItemClick = (data: RecreationForest) => {
+    const { fcNo, fcNm, fcAddr, ref1 } = data;
+    setClickedItem({ fcNo, fcNm, fcAddr, ref1, memo: "" });
+    setModalOpen(true);
+  };
+
+  const handleModalSubmit = (
+    fcNo: number,
+    name: string,
+    address: string,
+    tel: string,
+    memo: string,
+  ) => {
+    if (!memo.length) {
+      return alert("메모를 입력해주세요!");
+    }
+    const isSavedItem = savedItem.find((v) => v.fcNo === fcNo);
+
+    if (isSavedItem) {
+      alert("이미 저장된 항목입니다!");
+      return setModalOpen(false);
+    }
+
+    setSavedItem([...savedItem, { fcNo, fcNm: name, fcAddr: address, ref1: tel, memo }]);
+    setModalOpen(false);
+  };
   return (
     <S.Wrapper>
       <S.Nav>
@@ -53,13 +91,26 @@ const List = () => {
         <S.ListContainer>
           {dataList.map((data, idx) => {
             if (dataList.length === idx + 1) {
-              return <Item key={idx} data={data} ref={targetRef} />;
+              return (
+                <Item key={idx} data={data} ref={targetRef} handleItemClick={handleItemClick} />
+              );
             } else {
-              return <Item key={idx} data={data} />;
+              return <Item key={idx} data={data} handleItemClick={handleItemClick} />;
             }
           })}
         </S.ListContainer>
       </S.Main>
+      {modalOpen && clickedItem && (
+        <FormModal
+          setIsModalOpen={setModalOpen}
+          fcNo={clickedItem.fcNo}
+          name={clickedItem.fcNm}
+          address={clickedItem.fcAddr}
+          tel={clickedItem.ref1}
+          handleSubmitBtn={handleModalSubmit}
+          isAway
+        />
+      )}
     </S.Wrapper>
   );
 };
