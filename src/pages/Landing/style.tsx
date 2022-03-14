@@ -2,7 +2,7 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import styled from "styled-components";
 
 export const WrapDiv = styled.div`
-  padding: 2rem;
+  padding: 20px;
 `;
 
 export const ProfileWrap = styled.div`
@@ -11,26 +11,28 @@ export const ProfileWrap = styled.div`
 `;
 
 export const ProfileImg = styled.img`
-  width: 5rem;
-  margin-right: 1rem;
+  width: 70px;
+  margin-right: 20px;
+  background-color: rgba(255, 165, 2, 0.7);
+  border-radius: 100%;
 `;
 
 export const ProfileMsg = styled.p`
-  margin-top: 0.75rem;
-  font-size: 1.125rem;
+  margin-top: 12px;
+  font-size: 1.5rem;
   color: gray;
 `;
 
 export const ProifileName = styled.p`
-  margin-top: 0.25rem;
-  margin-bottom: 3rem;
-  font-size: 1.5rem;
+  margin-top: 8px;
+  margin-bottom: 30px;
+  font-size: 1.75rem;
   font-weight: bold;
 `;
 
 export const BannerWrap = styled.div`
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
   margin: auto;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
@@ -40,19 +42,20 @@ export const BannerWrap = styled.div`
 export const BannerImg = styled.img`
   position: relative;
   top: 25px;
-  left: 55px;
+  left: 70px;
   width: 200px;
+  margin-top: 18px; ;
 `;
 
 export const BannerTitle = styled.p`
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: white;
 `;
 
 export const BannerSubTitle = styled.p`
   margin-top: 3px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 100;
   color: white;
   opacity: 85%;
@@ -60,9 +63,9 @@ export const BannerSubTitle = styled.p`
 
 export const BannerTitleWrap = styled.div`
   display: flex;
-  background-color: var(--color-green-dark);
+  background-color: var(--color-blue);
   border-radius: 10px;
-  padding: 8px;
+  padding: 10px 20px;
 `;
 
 export const BannerBtn = styled.button`
@@ -70,10 +73,17 @@ export const BannerBtn = styled.button`
 `;
 
 export const BannerIcon = styled(BsFillArrowRightSquareFill)`
-  margin-left: 10px;
-  font-size: 28px;
-  color: var(--color-yellow-dark);
-  background-color: black;
+  margin-left: 18px;
+  font-size: 32px;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #5335cf 0%,
+    #de005e 25%,
+    #f66e48 50%,
+    #de005e 75%,
+    #5335cf 100%
+  );
   border-radius: 5px;
 `;
 

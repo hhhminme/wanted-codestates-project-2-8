@@ -7,7 +7,7 @@ const Landing = () => {
     <S.WrapDiv>
       <S.ProfileWrap>
         <div>
-          <S.ProfileImg src="img/user.png" />
+          <S.ProfileImg src="img/Saly-1.png" />
         </div>
         <div>
           <S.ProfileMsg>환영합니다. 👋</S.ProfileMsg>

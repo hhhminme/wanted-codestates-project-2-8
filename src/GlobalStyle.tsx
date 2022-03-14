@@ -16,10 +16,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --color-green-dark : #019267;
-    --color-green : #00C897;
-    --color-yellow-dark : #FFD365;
-    --color-yellow : #FDFFA9;
+    --color-blue : #5352ED;
+    --color-light-blue : #1E90FF;
+    --color-yellow : #FFA502;
+    --color-purple : #CCB4FF;
   }
 `;
 
