@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import styled from "styled-components";
 import Home from "./pages/Home";
@@ -19,12 +19,12 @@ const GlobalContainer = styled.div`
 function App() {
   return (
     <GlobalContainer>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/list" element={<List />}></Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </GlobalContainer>
   );
 }
