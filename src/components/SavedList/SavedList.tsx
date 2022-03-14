@@ -3,45 +3,24 @@ import { useNavigate } from "react-router";
 
 import * as S from "./style";
 
-interface FilterMemo {
-  contents: string;
-  emdNm: string;
-  fcAddr: string;
-  fcAddrDetail: string;
-  fcGbn: string;
-  fcNm: number;
-  fcNo: string;
-  ref1: string;
-  ref2: string;
-  ref3: string;
-  sggNm: string;
-  siNm: string;
-  wDate: string;
-  xp: string;
-  yp: string;
-  zip: string;
-}
+import { ClickedItem } from "../../pages/Home/Home";
 
 interface Props {
-  filteredMemo: FilterMemo[];
+  filtered: ClickedItem[];
 }
 
-function SavedList({ filteredMemo }: Props) {
+function SavedList({ filtered }: Props) {
   const navigation = useNavigate();
-
-  useEffect(() => {
-    console.log(filteredMemo);
-  }, []);
 
   return (
     <S.SavedListWrapper>
-      {filteredMemo.length > 0 ? (
-        filteredMemo.map((memo: FilterMemo, index: number) => {
+      {filtered.length > 0 ? (
+        filtered.map((item) => {
           return (
-            <S.CardWrapper key={index}>
-              <S.Title>{memo.fcNm}</S.Title>
-              <S.Line>{memo.fcAddr}</S.Line>
-              <S.Line>{memo.ref1}</S.Line>
+            <S.CardWrapper key={item.fcNo}>
+              <S.Title>{item.fcNm}</S.Title>
+              <S.Line>{item.fcAddr}</S.Line>
+              <S.Line>{item.ref1}</S.Line>
               <S.Line>메모</S.Line>
             </S.CardWrapper>
           );
