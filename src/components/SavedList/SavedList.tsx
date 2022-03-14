@@ -39,10 +39,15 @@ function SavedList({ filteredMemo }: Props) {
         filteredMemo.map((memo: FilterMemo, index: number) => {
           return (
             <S.CardWrapper key={index}>
-              <S.Title>{memo.fcNm}</S.Title>
-              <S.Line>{memo.fcAddr}</S.Line>
-              <S.Line>{memo.ref1}</S.Line>
-              <S.Line>메모</S.Line>
+              <S.CardImgWrap>
+                <S.CardImg src="img/Saly-44.png"></S.CardImg>
+              </S.CardImgWrap>
+              <div>
+                <S.Title>{memo.fcNm}</S.Title>
+                <S.Line>{memo.fcAddr}</S.Line>
+                <S.Line>{memo.ref1}</S.Line>
+                <S.Line>메모</S.Line>
+              </div>
             </S.CardWrapper>
           );
         })
