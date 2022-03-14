@@ -10,7 +10,7 @@ export const Dim = styled.div`
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.75);
-  z-index: 10000;
+  z-index: 99;
 `;
 export const Wrapper = styled.div`
   position: fixed;
@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 100001;
+  z-index: 100;
 `;
 export const CloseBtn = styled.button`
   border: none;
