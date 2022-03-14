@@ -4,10 +4,11 @@ import * as S from "./style";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
 import { GrRefresh } from "react-icons/gr";
+import { FilterMemo } from "../../pages/Home/Home";
 
 interface SearchProps {
-  filteredMemo: string[];
-  setFilteredMemo: React.Dispatch<React.SetStateAction<string[]>>;
+  filteredMemo: FilterMemo[];
+  setFilteredMemo: React.Dispatch<React.SetStateAction<FilterMemo[]>>;
 }
 
 function Search({ filteredMemo, setFilteredMemo }: SearchProps) {

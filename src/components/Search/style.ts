@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: 35px;
   font-size: 1.6rem;
   margin: 5px 0;
+  background-color: white;
 `;
 
 export const Select = styled.div`
@@ -27,7 +28,9 @@ export const Options = styled.ul`
   list-style: none;
   position: absolute;
   top: 50px;
+  background-color: white;
   border-radius: 3px;
+  border: 1px solid gray;
 `;
 
 export const Option = styled.li`

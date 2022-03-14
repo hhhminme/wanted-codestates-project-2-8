@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import Search from "../../components/Search/Search";
-import SavedList from "../../components/SavedList";
+import SavedList from "../../components/SavedList/SavedList";
+import * as S from "./style";
 
 import { data } from "./data";
 
-interface FilterMemo {
+export interface FilterMemo {
   contents: string;
   emdNm: string;
   fcAddr: string;
@@ -43,10 +44,10 @@ const Home = () => {
   }, [filteredMemo]);
 
   return (
-    <div>
+    <S.Container>
       <Search filteredMemo={filteredMemo} setFilteredMemo={setFilteredMemo} />
       <SavedList filteredMemo={filteredMemo} />
-    </div>
+    </S.Container>
   );
 };
 
