@@ -47,7 +47,7 @@ function SavedList({ filteredMemo }: Props) {
           );
         })
       ) : (
-        <div>hihi</div>
+        <S.NoMemo>저장한 메모가 없습니다.</S.NoMemo>
       )}
       <S.AddMemo
         onClick={() => {

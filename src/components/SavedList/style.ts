@@ -50,3 +50,9 @@ export const Title = styled.div`
 export const Line = styled.div`
   font-size: 1.1rem;
 `;
+
+export const NoMemo = styled.div`
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 20px 0;
+`;
