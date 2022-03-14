@@ -6,9 +6,6 @@ export const Wrapper = styled.div`
   align-items: center;
   overflow: scroll;
   height: 100vh;
-
-  &::-webkit-scrollbar {
-  }
 `;
 
 export const Nav = styled.nav`
