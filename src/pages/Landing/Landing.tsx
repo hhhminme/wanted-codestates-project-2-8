@@ -58,16 +58,23 @@ const Landing = () => {
         </S.MyPlaceSubTitle>
       </S.MyPlace>
       <S.CardWrap>
-        {filtered.slice(0, 4).map((item, idx) => (
-          <S.Card key={idx} onClick={() => navigate("/home")}>
-            <S.CardImg src="img/cardImg.png" />
-            <S.CardTitle>{item.fcNm}</S.CardTitle>
-            <S.CardSubTitle>
-              <S.CardIcon />
-              {item.fcAddr}
-            </S.CardSubTitle>
-          </S.Card>
-        ))}
+        {filtered.length > 0 ? (
+          filtered.slice(0, 4).map((item, idx) => (
+            <S.Card key={idx} onClick={() => navigate("/home")}>
+              <S.CardImg src="img/cardImg.png" />
+              <S.CardTitle>{item.fcNm}</S.CardTitle>
+              <S.CardSubTitle>
+                <S.CardIcon />
+                {item.fcAddr}
+              </S.CardSubTitle>
+            </S.Card>
+          ))
+        ) : (
+          <S.CardNotice>
+            저장된 내역이 없습니다. <br />
+            더보기란을 눌러 추가해보세요.
+          </S.CardNotice>
+        )}
       </S.CardWrap>
     </S.WrapDiv>
   );

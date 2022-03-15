@@ -106,6 +106,7 @@ export const MyPlaceSubTitle = styled.p`
 
 export const CardWrap = styled.div`
   display: flex;
+
   width: 300px;
   padding: 10px;
   overflow-x: scroll;
@@ -162,4 +163,12 @@ export const CardImg = styled.img`
   margin: auto;
   margin-bottom: 5px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+`;
+
+export const CardNotice = styled.div`
+  width: 250px;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  padding-left: 15px;
 `;
