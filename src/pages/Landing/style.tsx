@@ -1,6 +1,14 @@
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
-import styled from "styled-components";
-
+import styled, { keyframes } from "styled-components";
+import { HiLocationMarker } from "react-icons/hi";
+const fadeout = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 export const WrapDiv = styled.div`
   padding: 20px;
 `;
@@ -8,6 +16,8 @@ export const WrapDiv = styled.div`
 export const ProfileWrap = styled.div`
   margin-top: 20px;
   display: flex;
+  margin-left: 20px;
+  animation: ${fadeout} 1s linear forwards;
 `;
 
 export const ProfileImg = styled.img`
@@ -90,7 +100,7 @@ export const BannerIcon = styled(BsFillArrowRightSquareFill)`
 export const MyPlace = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 50px 35px 0px 35px;
+  margin: 50px 20px 0px 20px;
 `;
 
 export const MyPlaceTitle = styled.p`
@@ -101,4 +111,73 @@ export const MyPlaceTitle = styled.p`
 export const MyPlaceSubTitle = styled.p`
   margin-top: 5px;
   color: grey;
+`;
+
+export const CardWrap = styled.div`
+  display: flex;
+
+  width: 300px;
+  padding: 10px;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  scroll-behavior: smooth;
+`;
+
+export const Card = styled.div`
+  background-color: white;
+  width: 140px;
+  height: 145px;
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  margin-right: 15px;
+
+  :last-child {
+    margin: 0;
+  }
+`;
+
+export const CardTitle = styled.li`
+  padding-top: 8px;
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const CardIcon = styled(HiLocationMarker)`
+  display: inline;
+  color: var(--color-yellow);
+  margin-right: 3px;
+`;
+
+export const CardSubTitle = styled.li`
+  list-style: none;
+  font-size: 0.8rem;
+  width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const CardImg = styled.img`
+  border-radius: 10px;
+  width: 120px;
+  height: 80px;
+  margin: auto;
+  margin-bottom: 5px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+`;
+
+export const CardNotice = styled.div`
+  width: 250px;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  padding-left: 15px;
 `;
