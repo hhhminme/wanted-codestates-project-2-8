@@ -28,7 +28,7 @@ export const Options = styled.ul`
   border: 1px solid gray;
   list-style: none;
   position: absolute;
-  top: 50px;
+  top: 110px;
   background-color: white;
   border-radius: 3px;
   border: 1px solid gray;
