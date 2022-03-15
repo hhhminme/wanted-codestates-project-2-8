@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useRef } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import Modal from "../Modal";
 import Input from "./Input";
 import * as S from "./style";
@@ -12,7 +12,7 @@ interface Props {
   initialMemo?: string;
   isEdit?: boolean;
   isAway?: boolean;
-  handleRemoveBtn?: () => void;
+  handleRemoveBtn?: (fcNo: number) => void;
   handleSubmitBtn: (fcNo: number, name: string, address: string, tel: string, memo: string) => void;
 }
 
@@ -37,8 +37,9 @@ const FormModal = ({
   };
 
   const onRemoveClick = () => {
-    handleRemoveBtn && handleRemoveBtn();
+    handleRemoveBtn && handleRemoveBtn(fcNo);
   };
+
   return (
     <Modal setIsModalOpen={setIsModalOpen} isAway={isAway}>
       <S.ModalInner>
