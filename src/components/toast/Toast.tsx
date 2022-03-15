@@ -35,10 +35,9 @@ export function MemoRequestMsg() {
   return (
     <MsgContainer
       height={"60px"}
-      width={"210px"}
+      width={"275px"}
       fontSize={"18px"}
       top={"10%"}
-      left={"70%"}
       opacity={`${opacity}%`}
     >
       메모를 입력해주세요.
@@ -66,10 +65,10 @@ export function MemoExistMsg() {
   return (
     <MsgContainer
       height={"60px"}
-      width={"210px"}
+      width={"275px"}
       fontSize={"18px"}
+      backgroundColor={"#3ac172"}
       top={"10%"}
-      left={"70%"}
       opacity={`${opacity}%`}
     >
       이미 등록되었습니다.
@@ -100,8 +99,8 @@ export function CompleteSavedMsg() {
       height={"60px"}
       width={"275px"}
       fontSize={"18px"}
-      backgroundColor={"#85F9CF "}
-      top={"13%"}
+      backgroundColor={"#3ac172"}
+      top={"10%"}
       opacity={`${opacity}%`}
     >
       저장이 완료되었습니다.
@@ -131,7 +130,7 @@ export function CompleteRemovedMsg() {
       height={"60px"}
       width={"275px"}
       fontSize={"18px"}
-      top={"55%"}
+      top={"10%"}
       opacity={`${opacity}%`}
     >
       삭제가 완료되었습니다.
@@ -152,7 +151,7 @@ export const MsgContainer = styled.div<FeedbackProps>`
   transform: translateX(-50%) translateY(-50%);
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
   font-weight: 700;
-  border-radius: 15px;
+  border-radius: 10px;
   text-align: center;
   position: fixed;
   z-index: 101;

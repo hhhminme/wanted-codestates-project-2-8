@@ -20,12 +20,12 @@ const Home = () => {
 
   useEffect(() => {
     setFilteredItem(savedItem);
-  }, []);
+  }, [savedItem]);
 
   return (
     <S.Container>
       <Search savedItem={savedItem} setFilteredItem={setFilteredItem} />
-      <SavedList filtered={filtered} />
+      <SavedList filtered={filtered} savedItem={savedItem} setSavedItem={setSavedItem} />
     </S.Container>
   );
 };

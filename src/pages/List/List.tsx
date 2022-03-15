@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import FormModal from "src/components/FormModal";
 import { LOCAL_STORAGE_KEY } from "src/constants";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { MemoRequestMsg, MemoExistMsg } from "../../components/toast/Toast";
+import { MemoRequestMsg, MemoExistMsg, CompleteSavedMsg } from "../../components/toast/Toast";
 
 interface ClickedItem {
   fcNo: number;
@@ -25,6 +25,7 @@ const List = () => {
   const [savedItem, setSavedItem] = useLocalStorage<ClickedItem[] | []>(LOCAL_STORAGE_KEY, []);
   const [toast1, setToast1] = useState(false);
   const [toast2, setToast2] = useState(false);
+  const [toast3, setToast3] = useState(false);
   const targetRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -82,6 +83,7 @@ const List = () => {
 
     setSavedItem([...savedItem, { fcNo, fcNm: name, fcAddr: address, ref1: tel, memo }]);
     setModalOpen(false);
+    setToast3((prev) => !prev);
   };
   return (
     <S.Wrapper>
@@ -116,6 +118,7 @@ const List = () => {
       )}
       {toast1 && <MemoRequestMsg />}
       {toast2 && <MemoExistMsg />}
+      {toast3 && <CompleteSavedMsg />}
     </S.Wrapper>
   );
 };
