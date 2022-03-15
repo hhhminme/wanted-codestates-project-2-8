@@ -3,33 +3,13 @@ import { AiFillPlusCircle } from "react-icons/ai";
 
 export const SavedListWrapper = styled.div`
   width: 100%;
-  height: calc(100vh - 35px);
+  height: calc(100vh - 115px);
   padding: 15px;
-  border-top: 1px solid lightgray;
   overflow: auto;
   &::-webkit-scrollbar {
     display: none;
   }
 `;
-export const AddMemo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  background: lightgray;
-  border-radius: 5px;
-
-  &:hover {
-    background: #dbdbdb;
-    cursor: pointer;
-  }
-`;
-
-export const AddIcon = styled(AiFillPlusCircle)`
-  font-size: 2rem;
-`;
-
 export const CardWrapper = styled.div`
   background: #efefef;
   border-radius: 5px;

@@ -5,7 +5,8 @@ export const Container = styled.div`
   justify-content: space-between;
   height: 35px;
   font-size: 1.6rem;
-  margin: 5px 0;
+  margin-top: 15px;
+  padding: 0 15px;
   background-color: white;
 `;
 
@@ -23,7 +24,7 @@ export const Select = styled.div`
 `;
 
 export const Options = styled.ul`
-  width: 66px;
+  width: 65px;
   border: 1px solid gray;
   list-style: none;
   position: absolute;
@@ -59,7 +60,7 @@ export const Refresh = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 250px;
+  width: calc(100% - 100px);
   padding-left: 8px;
   outline: none;
   border: 1px solid gray;
