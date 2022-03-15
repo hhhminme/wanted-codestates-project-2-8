@@ -41,6 +41,10 @@ export const Title = styled.h1`
 export const Line = styled.p`
   font-size: 1rem;
   color: white;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const NoMemo = styled.p`
