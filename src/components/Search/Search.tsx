@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
+import { GrRefresh } from "react-icons/gr";
 
 import * as S from "./style";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
-import { GrRefresh } from "react-icons/gr";
-import { FilterMemo } from "../../pages/Home/Home";
+import { ClickedItem } from "../../pages/Home/Home";
 
-interface SearchProps {
-  filteredMemo: FilterMemo[];
-  setFilteredMemo: React.Dispatch<React.SetStateAction<FilterMemo[]>>;
+interface SearchedProps {
+  savedItem: ClickedItem[];
+  setFilteredItem: React.Dispatch<React.SetStateAction<ClickedItem[]>>;
 }
 
-function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
+function Search({ savedItem, setFilteredItem }: SearchedProps) {
   const [selected, setSelected] = useState("이름");
   const [isShowOptions, setIsShowOptions] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -21,8 +21,21 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
   }, []);
 
   const handleSearchBar = (e: React.KeyboardEvent) => {
+    let result;
     if (e.key === "Enter") {
-      // console.log("enter!");
+      const keyword = inputRef.current && inputRef.current.value;
+      switch (selected) {
+        case "이름":
+          result = savedItem.filter((item) => item.fcNm.includes(keyword as string));
+          setFilteredItem(result);
+          break;
+        case "메모":
+          result = savedItem.filter((item) => item.memo.includes(keyword as string));
+          setFilteredItem(result);
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -35,11 +48,15 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
     setIsShowOptions(false);
   };
 
+  const handleRefresh = () => {
+    setFilteredItem(savedItem);
+  };
+
   return (
     <S.Container>
       <S.Select onClick={handleSelect}>
         <div>{selected}</div>
-        {isShowOptions ? <BsChevronUp /> : <BsChevronDown />}
+        {isShowOptions ? <S.UpBtn /> : <S.DownBtn />}
       </S.Select>
       {isShowOptions && (
         <S.Options>
@@ -50,15 +67,17 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
           ))}
         </S.Options>
       )}
-      <S.Refresh>
-        <GrRefresh />
-      </S.Refresh>
-      <S.Input
-        type="search"
-        placeholder="검색어를 입력해주세요"
-        ref={inputRef}
-        onKeyUp={handleSearchBar}
-      />
+      <S.InputWrap>
+        <S.Input
+          type="search"
+          placeholder="검색어를 입력해주세요"
+          ref={inputRef}
+          onKeyUp={handleSearchBar}
+        />
+        <S.Refresh onClick={handleRefresh}>
+          <GrRefresh />
+        </S.Refresh>
+      </S.InputWrap>
     </S.Container>
   );
 }

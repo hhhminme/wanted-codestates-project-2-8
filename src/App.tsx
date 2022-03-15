@@ -23,9 +23,10 @@ function App() {
     <GlobalContainer>
       <Router>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Start />}></Route>
           <Route path="/list" element={<List />}></Route>
           <Route path="/start" element={<Start />}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/landing" element={<Landing />}></Route>
         </Routes>
       </Router>

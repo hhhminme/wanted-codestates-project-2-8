@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { BsChevronLeft } from "react-icons/bs";
 
 import Item from "src/components/Item";
 import * as S from "./style";
@@ -7,7 +9,8 @@ import { RecreationForest, getRecreationForestList } from "../../api/getRecreati
 import { Link } from "react-router-dom";
 import FormModal from "src/components/FormModal";
 import { LOCAL_STORAGE_KEY } from "src/constants";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { MemoRequestMsg, MemoExistMsg, CompleteSavedMsg } from "../../components/toast/Toast";
 
 interface ClickedItem {
   fcNo: number;
@@ -22,8 +25,11 @@ const List = () => {
   const [clickedItem, setClickedItem] = useState<ClickedItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [savedItem, setSavedItem] = useLocalStorage<ClickedItem[] | []>(LOCAL_STORAGE_KEY, []);
+  const [toast1, setToast1] = useState(false);
+  const [toast2, setToast2] = useState(false);
+  const [toast3, setToast3] = useState(false);
   const targetRef = useRef<HTMLLIElement>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     loadData();
   }, []);
@@ -68,24 +74,23 @@ const List = () => {
     memo: string,
   ) => {
     if (!memo.length) {
-      return alert("메모를 입력해주세요!");
+      return setToast1((prev) => !prev);
     }
     const isSavedItem = savedItem.find((v) => v.fcNo === fcNo);
 
     if (isSavedItem) {
-      alert("이미 저장된 항목입니다!");
+      setToast2((prev) => !prev);
       return setModalOpen(false);
     }
 
     setSavedItem([...savedItem, { fcNo, fcNm: name, fcAddr: address, ref1: tel, memo }]);
     setModalOpen(false);
+    setToast3((prev) => !prev);
   };
   return (
     <S.Wrapper>
-      <S.Nav>
-        <Link to="/">
-          <IoIosArrowBack size={30} />
-        </Link>
+      <S.Nav onClick={() => navigate(-1)}>
+        <BsChevronLeft size={25} />
       </S.Nav>
       <S.Main>
         <S.ListContainer>
@@ -111,6 +116,9 @@ const List = () => {
           isAway
         />
       )}
+      {toast1 && <MemoRequestMsg />}
+      {toast2 && <MemoExistMsg />}
+      {toast3 && <CompleteSavedMsg />}
     </S.Wrapper>
   );
 };

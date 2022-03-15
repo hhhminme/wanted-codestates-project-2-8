@@ -13,6 +13,7 @@ export const Nav = styled.nav`
   align-items: center;
   width: 90%;
   height: 50px;
+  font-size: 2rem;
 `;
 
 export const Main = styled.main`
