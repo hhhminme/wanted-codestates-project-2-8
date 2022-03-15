@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router";
+import React from "react";
 
 import * as S from "./style";
 
@@ -10,8 +9,6 @@ interface Props {
 }
 
 function SavedList({ filtered }: Props) {
-  const navigation = useNavigate();
-
   return (
     <S.SavedListWrapper>
       {filtered.length > 0 ? (
@@ -28,13 +25,6 @@ function SavedList({ filtered }: Props) {
       ) : (
         <S.NoMemo>저장한 메모가 없습니다.</S.NoMemo>
       )}
-      <S.AddMemo
-        onClick={() => {
-          navigation("/list");
-        }}
-      >
-        <S.AddIcon />
-      </S.AddMemo>
     </S.SavedListWrapper>
   );
 }
