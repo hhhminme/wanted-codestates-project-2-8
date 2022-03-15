@@ -87,6 +87,7 @@ export const InputWrap = styled.div`
 `;
 
 export const Input = styled.input`
+  flex: 1;
   padding-left: 20px;
   outline: none;
   border: 0;

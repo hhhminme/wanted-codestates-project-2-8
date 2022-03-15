@@ -1,6 +1,14 @@
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { HiLocationMarker } from "react-icons/hi";
+const fadeout = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 export const WrapDiv = styled.div`
   padding: 20px;
 `;
@@ -9,6 +17,7 @@ export const ProfileWrap = styled.div`
   margin-top: 20px;
   display: flex;
   margin-left: 20px;
+  animation: ${fadeout} 1s linear forwards;
 `;
 
 export const ProfileImg = styled.img`
