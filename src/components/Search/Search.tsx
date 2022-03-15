@@ -4,9 +4,6 @@ import { GrRefresh } from "react-icons/gr";
 import * as S from "./style";
 import { BsChevronDown } from "react-icons/bs";
 import { BsChevronUp } from "react-icons/bs";
-
-import { FilterMemo } from "../../pages/Home/Home";
-
 import { ClickedItem } from "../../pages/Home/Home";
 
 interface SearchedProps {
