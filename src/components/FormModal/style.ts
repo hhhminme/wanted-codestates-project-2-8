@@ -35,5 +35,4 @@ export const Button = styled.button<{ isEdit?: boolean; isDelete?: boolean }>`
   background-color: ${({ isDelete }) => (isDelete ? "red" : "#3ac172")};
   font-size: 1.5rem;
   padding: 0.7rem;
-  border-radius: 10px;
 `;

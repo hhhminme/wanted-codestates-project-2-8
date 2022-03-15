@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useState } from "react";
 
 import * as S from "./style";
 
 import { ClickedItem } from "../../pages/Home/Home";
 import FormModal from "../FormModal";
 import { CompleteRemovedMsg, CompleteSavedMsg, MemoRequestMsg } from "../toast/Toast";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   filtered: ClickedItem[];
@@ -49,6 +49,7 @@ function SavedList({ filtered, savedItem, setSavedItem }: Props) {
     setModalOpen(false);
     setToast2((prev) => !prev);
   };
+
   return (
     <S.SavedListWrapper>
       {filtered.length > 0 ? (
@@ -65,13 +66,6 @@ function SavedList({ filtered, savedItem, setSavedItem }: Props) {
       ) : (
         <S.NoMemo>저장한 메모가 없습니다.</S.NoMemo>
       )}
-      <S.AddMemo
-        onClick={() => {
-          navigation("/list");
-        }}
-      >
-        <S.AddIcon />
-      </S.AddMemo>
       {modalOpen && clickedItem && (
         <FormModal
           setIsModalOpen={setModalOpen}

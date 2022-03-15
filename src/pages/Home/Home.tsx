@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { LOCAL_STORAGE_KEY } from "src/constants";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
+import * as S from "./style";
+import Header from "../../components/Header/Header";
 import Search from "../../components/Search/Search";
 import SavedList from "../../components/SavedList/SavedList";
-import * as S from "./style";
 
 export interface ClickedItem {
   fcNo: number;
@@ -24,6 +25,7 @@ const Home = () => {
 
   return (
     <S.Container>
+      <Header />
       <Search savedItem={savedItem} setFilteredItem={setFilteredItem} />
       <SavedList filtered={filtered} savedItem={savedItem} setSavedItem={setSavedItem} />
     </S.Container>
