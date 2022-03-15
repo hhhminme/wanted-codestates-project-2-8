@@ -8,6 +8,7 @@ export const WrapDiv = styled.div`
 export const ProfileWrap = styled.div`
   margin-top: 20px;
   display: flex;
+  margin-left: 20px;
 `;
 
 export const ProfileImg = styled.img`
@@ -90,7 +91,7 @@ export const BannerIcon = styled(BsFillArrowRightSquareFill)`
 export const MyPlace = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 50px 35px 0px 35px;
+  margin: 50px 20px 0px 20px;
 `;
 
 export const MyPlaceTitle = styled.p`

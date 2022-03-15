@@ -29,11 +29,8 @@ const Landing = () => {
     <S.WrapDiv>
       <S.ProfileWrap>
         <div>
-          <S.ProfileImg src="img/Saly-1.png" />
-        </div>
-        <div>
           <S.ProfileMsg>환영합니다. 👋</S.ProfileMsg>
-          <S.ProifileName>원티드 님</S.ProifileName>
+          <S.ProifileName>오늘은 어떤 색다른 일이 일어날까요?</S.ProifileName>
         </div>
       </S.ProfileWrap>
 
@@ -55,7 +52,7 @@ const Landing = () => {
       </S.BannerWrap>
 
       <S.MyPlace>
-        <S.MyPlaceTitle>나의 장소</S.MyPlaceTitle>
+        <S.MyPlaceTitle>저장한 휴양림</S.MyPlaceTitle>
         <S.MyPlaceSubTitle>
           <Link to="/home">더보기</Link>
         </S.MyPlaceSubTitle>
