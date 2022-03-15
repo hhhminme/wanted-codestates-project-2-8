@@ -35,7 +35,7 @@ const Landing = () => {
       <S.MyPlace>
         <S.MyPlaceTitle>나의 장소</S.MyPlaceTitle>
         <S.MyPlaceSubTitle>
-          <Link to="/">더보기</Link>
+          <Link to="/home">더보기</Link>
         </S.MyPlaceSubTitle>
       </S.MyPlace>
     </S.WrapDiv>
