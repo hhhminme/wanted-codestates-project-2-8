@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+
 import * as S from "./style";
+import { LOCAL_STORAGE_KEY } from "src/constants";
+import { useLocalStorage } from "src/hooks/useLocalStorage";
+
+interface ClickedItem {
+  fcNo: number;
+  fcNm: string;
+  fcAddr: string;
+  memo: string;
+  ref1: string;
+}
+
 const Landing = () => {
+  const [savedItem, setSavedItem] = useLocalStorage<ClickedItem[] | []>(LOCAL_STORAGE_KEY, []);
+  const [filtered, setFilteredItem] = useState<ClickedItem[]>([]);
+
+  useEffect(() => {
+    setFilteredItem(savedItem);
+  }, [savedItem]);
+
+  const navigate = useNavigate();
+
   return (
     <S.WrapDiv>
       <S.ProfileWrap>
@@ -38,6 +60,18 @@ const Landing = () => {
           <Link to="/home">더보기</Link>
         </S.MyPlaceSubTitle>
       </S.MyPlace>
+      <S.CardWrap>
+        {filtered.slice(0, 4).map((item, idx) => (
+          <S.Card key={idx} onClick={() => navigate("/home")}>
+            <S.CardImg src="img/cardImg.png" />
+            <S.CardTitle>{item.fcNm}</S.CardTitle>
+            <S.CardSubTitle>
+              <S.CardIcon />
+              {item.fcAddr}
+            </S.CardSubTitle>
+          </S.Card>
+        ))}
+      </S.CardWrap>
     </S.WrapDiv>
   );
 };
