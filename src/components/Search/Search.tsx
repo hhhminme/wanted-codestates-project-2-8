@@ -74,7 +74,7 @@ function Search({ savedItem, setFilteredItem }: SearchedProps) {
           ref={inputRef}
           onKeyUp={handleSearchBar}
         />
-        <S.Refresh>
+        <S.Refresh onClick={handleRefresh}>
           <GrRefresh />
         </S.Refresh>
       </S.InputWrap>

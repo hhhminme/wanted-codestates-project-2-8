@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import { BsChevronLeft } from "react-icons/bs";
 
 import Item from "src/components/Item";
 import * as S from "./style";
@@ -27,7 +29,7 @@ const List = () => {
   const [toast2, setToast2] = useState(false);
   const [toast3, setToast3] = useState(false);
   const targetRef = useRef<HTMLLIElement>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     loadData();
   }, []);
@@ -87,10 +89,8 @@ const List = () => {
   };
   return (
     <S.Wrapper>
-      <S.Nav>
-        <Link to="/">
-          <IoIosArrowBack size={30} />
-        </Link>
+      <S.Nav onClick={() => navigate(-1)}>
+        <BsChevronLeft size={25} />
       </S.Nav>
       <S.Main>
         <S.ListContainer>

@@ -4606,23 +4606,13 @@ http-proxy-agent@^4.0.1:
   integrity sha512-k0zdNgqWTGA6aeIRVpvfVob4fL52dTfaehylg0Y4UvSySvOq/Y+BOyPrgpUrA7HylqvU8vIZGsRuXmspskV0Tg==
   dependencies:
     "@tootallnate/once" "1"
-<<<<<<< Updated upstream
     agent-base "6"
     debug "4"
 
 http-proxy-middleware@^2.0.0, http-proxy-middleware@^2.0.4:
   version "2.0.4"
-  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.4.tgz#03af0f4676d172ae775cb5c33f592f40e1a4e07a"
+  resolved "https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-2.0.4.tgz"
   integrity sha512-m/4FxX17SUvz4lJ5WPXOHDUuCwIqXLfLHs1s0uZ3oYjhoXlx9csYxaOa0ElDEJ+h8Q4iJ1s+lTMbiCa4EXIJqg==
-=======
-    "agent-base" "6"
-    "debug" "4"
-
-"http-proxy-middleware@^2.0.0", "http-proxy-middleware@^2.0.4":
-  "integrity" "sha512-m/4FxX17SUvz4lJ5WPXOHDUuCwIqXLfLHs1s0uZ3oYjhoXlx9csYxaOa0ElDEJ+h8Q4iJ1s+lTMbiCa4EXIJqg=="
-  "resolved" "https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-2.0.4.tgz"
-  "version" "2.0.4"
->>>>>>> Stashed changes
   dependencies:
     "@types/http-proxy" "^1.17.8"
     http-proxy "^1.18.1"

@@ -63,7 +63,7 @@ function SavedList({ filtered, savedItem, setSavedItem }: Props) {
                 <S.Title>{item.fcNm}</S.Title>
                 <S.Line>{item.fcAddr}</S.Line>
                 <S.Line>{item.ref1}</S.Line>
-                <S.Line>메모</S.Line>
+                <S.Line>{item.memo}</S.Line>
               </div>
             </S.CardWrapper>
           );

@@ -12,9 +12,14 @@ type ItemProps = {
 const Item = forwardRef<HTMLLIElement, ItemProps>(({ data, handleItemClick }, ref) => {
   return (
     <S.Container ref={ref} onClick={() => handleItemClick(data)}>
-      <div>{data.fcNm}</div>
-      <div>{data.fcAddr}</div>
-      <div>{data.ref1}</div>
+      <S.CardImgWrap>
+        <S.CardImg src="img/Saly-44.png"></S.CardImg>
+      </S.CardImgWrap>
+      <S.ContentWrap>
+        <S.ItemTitle>{data.fcNm}</S.ItemTitle>
+        <S.ItemSubTitle>{data.fcAddr}</S.ItemSubTitle>
+        <S.ItemSubTitle>{data.ref1}</S.ItemSubTitle>
+      </S.ContentWrap>
     </S.Container>
   );
 });

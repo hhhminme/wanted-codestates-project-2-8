@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as S from "./style";
 
 const Start = () => {
+  const navigate = useNavigate();
   return (
     <S.WrapDiv>
       <div>
@@ -15,9 +16,7 @@ const Start = () => {
         </S.Title>
       </div>
       <S.ImgBtm src="img/Saly-16.png" />
-      <S.Button className="bubbly-button">
-        <Link to="/landing">찾아보기</Link>
-      </S.Button>
+      <S.Button onClick={() => navigate("/landing")}>찾아보기</S.Button>
     </S.WrapDiv>
   );
 };
