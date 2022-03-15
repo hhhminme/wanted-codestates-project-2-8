@@ -27,7 +27,7 @@ export const Options = styled.ul`
   width: 140px;
   list-style: none;
   position: absolute;
-  top: 50px;
+  top: 110px;
   background-color: white;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
