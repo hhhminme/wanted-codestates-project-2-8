@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import { BsChevronLeft } from "react-icons/bs";
 
 import Item from "src/components/Item";
 import * as S from "./style";
@@ -89,7 +90,7 @@ const List = () => {
   return (
     <S.Wrapper>
       <S.Nav onClick={() => navigate(-1)}>
-        <IoIosArrowBack size={30} />
+        <BsChevronLeft size={25} />
       </S.Nav>
       <S.Main>
         <S.ListContainer>
