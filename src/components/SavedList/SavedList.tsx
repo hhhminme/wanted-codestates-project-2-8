@@ -55,7 +55,7 @@ function SavedList({ filtered, savedItem, setSavedItem }: Props) {
       {filtered.length > 0 ? (
         filtered.map((item, index) => {
           return (
-            <S.CardWrapper key={index}>
+            <S.CardWrapper key={index} onClick={() => handleItemClick(item)}>
               <S.CardImgWrap>
                 <S.CardImg src="img/Saly-44.png"></S.CardImg>
               </S.CardImgWrap>
@@ -63,7 +63,7 @@ function SavedList({ filtered, savedItem, setSavedItem }: Props) {
                 <S.Title>{item.fcNm}</S.Title>
                 <S.Line>{item.fcAddr}</S.Line>
                 <S.Line>{item.ref1}</S.Line>
-                <S.Line>메모</S.Line>
+                <S.Line>{item.memo}</S.Line>
               </div>
             </S.CardWrapper>
           );
