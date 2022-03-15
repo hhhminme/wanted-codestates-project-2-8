@@ -1,67 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { LOCAL_STORAGE_KEY } from "src/constants";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
+import * as S from "./style";
+import Header from "../../components/Header/Header";
 import Search from "../../components/Search/Search";
 import SavedList from "../../components/SavedList/SavedList";
-import * as S from "./style";
 
-import { data } from "./data";
-
-export interface FilterMemo {
-  contents: string;
-  emdNm: string;
+export interface ClickedItem {
+  fcNo: number;
+  fcNm: string;
   fcAddr: string;
-  fcAddrDetail: string;
-  fcGbn: string;
-  fcNm: number;
-  fcNo: string;
+  memo: string;
   ref1: string;
-  ref2: string;
-  ref3: string;
-  sggNm: string;
-  siNm: string;
-  wDate: string;
-  xp: string;
-  yp: string;
-  zip: string;
-}
-
-interface realType {
-  response: FilterMemo[];
 }
 
 const Home = () => {
-  const [filteredMemo, setFilteredMemo] = useState<FilterMemo[]>([]);
-
-  const getLocalStorage = (key: string, initialState: FilterMemo[]) => {
-    try {
-      const item = localStorage.getItem(key);
-      if (item) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const parseItem = JSON.parse(item);
-
-        setFilteredMemo(parseItem as FilterMemo[]);
-      } else {
-        console.log("꽝");
-      }
-    } catch (error) {
-      console.log(error);
-      return initialState;
-    }
-  };
+  const [savedItem, setSavedItem] = useLocalStorage<ClickedItem[] | []>(LOCAL_STORAGE_KEY, []);
+  const [filtered, setFilteredItem] = useState<ClickedItem[]>([]);
 
   useEffect(() => {
-    // 로컬 스토리지에서 데이터 가져오기
-    // const localData = JSON.parse(window.localStorage.getItem("key"));
-    // getLocalStorage("key", []);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    setFilteredMemo(data.response as FilterMemo[]);
-    console.log(filteredMemo);
+    setFilteredItem(savedItem);
   }, []);
 
   return (
     <S.Container>
-      <Search filteredMemo={filteredMemo} setFilteredMemo={setFilteredMemo} />
-      <SavedList filteredMemo={filteredMemo} />
+      <Header />
+      <Search savedItem={savedItem} setFilteredItem={setFilteredItem} />
+      <SavedList filtered={filtered} />
     </S.Container>
   );
 };

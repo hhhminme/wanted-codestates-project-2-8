@@ -155,5 +155,5 @@ export const MsgContainer = styled.div<FeedbackProps>`
   border-radius: 15px;
   text-align: center;
   position: fixed;
-  z-index: 100;
+  z-index: 101;
 `;

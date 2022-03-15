@@ -25,9 +25,7 @@ export type RecreationForest = {
 
 export const getRecreationForestList = async (page: number) => {
   try {
-    const res = await axios.get<string>(
-      `/openapi-json/pubdata/pubMapForest.do?numOfRows=10&pageNo=${page}`,
-    );
+    const res = await axios.get<string>(`/openapi-json/pubdata/pubMapForest.do?pageNo=${page}`);
 
     const parsedData = JSON.parse(res.data) as RecreationForestListResponse;
     return parsedData.response;

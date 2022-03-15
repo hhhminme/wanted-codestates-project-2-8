@@ -10,25 +10,6 @@ export const SavedListWrapper = styled.div`
     display: none;
   }
 `;
-export const AddMemo = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  background: lightgray;
-  border-radius: 5px;
-
-  &:hover {
-    background: #dbdbdb;
-    cursor: pointer;
-  }
-`;
-
-export const AddIcon = styled(AiFillPlusCircle)`
-  font-size: 2rem;
-`;
-
 export const CardWrapper = styled.div`
   display: flex;
   background: rgba(83, 82, 237, 0.8);

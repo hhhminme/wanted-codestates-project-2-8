@@ -7,12 +7,14 @@ import { BsChevronUp } from "react-icons/bs";
 
 import { FilterMemo } from "../../pages/Home/Home";
 
-interface SearchProps {
-  filteredMemo: FilterMemo[];
-  setFilteredMemo: React.Dispatch<React.SetStateAction<FilterMemo[]>>;
+import { ClickedItem } from "../../pages/Home/Home";
+
+interface SearchedProps {
+  savedItem: ClickedItem[];
+  setFilteredItem: React.Dispatch<React.SetStateAction<ClickedItem[]>>;
 }
 
-function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
+function Search({ savedItem, setFilteredItem }: SearchedProps) {
   const [selected, setSelected] = useState("이름");
   const [isShowOptions, setIsShowOptions] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -22,8 +24,21 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
   }, []);
 
   const handleSearchBar = (e: React.KeyboardEvent) => {
+    let result;
     if (e.key === "Enter") {
-      // console.log("enter!");
+      const keyword = inputRef.current && inputRef.current.value;
+      switch (selected) {
+        case "이름":
+          result = savedItem.filter((item) => item.fcNm.includes(keyword as string));
+          setFilteredItem(result);
+          break;
+        case "메모":
+          result = savedItem.filter((item) => item.memo.includes(keyword as string));
+          setFilteredItem(result);
+          break;
+        default:
+          break;
+      }
     }
   };
 
@@ -34,6 +49,10 @@ function Search({ filteredMemo, setFilteredMemo }: SearchProps) {
   const handleOption = (option: string) => {
     setSelected(option);
     setIsShowOptions(false);
+  };
+
+  const handleRefresh = () => {
+    setFilteredItem(savedItem);
   };
 
   return (

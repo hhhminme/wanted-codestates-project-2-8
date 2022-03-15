@@ -7,7 +7,8 @@ import { RecreationForest, getRecreationForestList } from "../../api/getRecreati
 import { Link } from "react-router-dom";
 import FormModal from "src/components/FormModal";
 import { LOCAL_STORAGE_KEY } from "src/constants";
-import { useLocalStorage } from "./useLocalStorage";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { MemoRequestMsg, MemoExistMsg } from "../../components/toast/Toast";
 
 interface ClickedItem {
   fcNo: number;
@@ -22,6 +23,8 @@ const List = () => {
   const [clickedItem, setClickedItem] = useState<ClickedItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [savedItem, setSavedItem] = useLocalStorage<ClickedItem[] | []>(LOCAL_STORAGE_KEY, []);
+  const [toast1, setToast1] = useState(false);
+  const [toast2, setToast2] = useState(false);
   const targetRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -68,12 +71,12 @@ const List = () => {
     memo: string,
   ) => {
     if (!memo.length) {
-      return alert("메모를 입력해주세요!");
+      return setToast1((prev) => !prev);
     }
     const isSavedItem = savedItem.find((v) => v.fcNo === fcNo);
 
     if (isSavedItem) {
-      alert("이미 저장된 항목입니다!");
+      setToast2((prev) => !prev);
       return setModalOpen(false);
     }
 
@@ -111,6 +114,8 @@ const List = () => {
           isAway
         />
       )}
+      {toast1 && <MemoRequestMsg />}
+      {toast2 && <MemoExistMsg />}
     </S.Wrapper>
   );
 };
