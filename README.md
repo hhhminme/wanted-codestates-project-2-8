@@ -12,14 +12,52 @@
 </p>
 
 ## 요구 사항
+1. 데이터 조회는 한 번에 10개씩 무한 스크롤로 조회
+2. 이름, 메모 두 가지 조건 중 하나를 선택하여 검색
+3. 휴양림을 저장할 시 메모를 반드시 작성하도록 구현
+4. 로컬 스토리지를 활용하여 데이터 저장 및 조회
+6. 저장된 메모에 대한 삭제 혹은 수정 기능
+7. 유저의 활동에 대한 알림(토스트 UI) 추가
 
 ## 기능 구현
 
 ### 1팀 : 오카무라카에, 허민, 박상우, 호용
+![1팀 시연 영상](https://user-images.githubusercontent.com/49917043/160461777-0b35e3f3-72f7-4270-9230-8778f6b89dc0.gif)
 
-### 기능
+### Local Storage로 저장된 리스크 불러오기
+```js
+import { useState } from "react";
 
-내용
+export const useLocalStorage = <T>(key: string, initialState: T): [T, (value: T) => void] => {
+  const getLocalStorage = () => {
+    try {
+      const item = localStorage.getItem(key);
+      return item !== null ? (JSON.parse(item) as T) : initialState;
+    } catch (e) {
+      console.error(e);
+      return initialState;
+    }
+  };
+
+  const [storage, setStorage] = useState(getLocalStorage());
+
+  const setLocalStorage = (value: T) => {
+    try {
+      setStorage(value);
+      const parsedItem = JSON.stringify(value);
+      localStorage.setItem(key, parsedItem);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  return [storage, setLocalStorage];
+};
+```
+useLocalStorage라는 custom hook을 제작하여 localStorage에 관한 기능을 컴포넌트에서 분리하여 관리하고자 하였습니다.
+localStorage에 메모를 저장하고, 메모를 불러올 수 있도록 setLocalStorage와 getLocalStorage를 제작하였습니다.  
+기존의 localstorage를 사용할때 초기에 값을 저장하는 경우, 저장되어 있지 않을떄 데이터를 불러올 경우에 대해서도 한번에 처리할 수 있도록 하였습니다.
+
+이후 화면에 결과 값을 출력해줄 때에는 메모가 저장되어 있지 않을 때에는 '저장된 메세지가 없습니다.'라는 표시를 해주었습니다.
 
 ### 기능
 
